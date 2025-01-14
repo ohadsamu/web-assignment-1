@@ -12,6 +12,12 @@ export const createPost = async (req: any, res: any) => {
 };
 
 export const getPosts = async (req: any, res: any) => {
+  const { sender } = req.query;
+  if (sender) {
+    const posts = await Post.find({ senderID: req.query.senderID });
+    res.json(posts);
+  }
+
   const posts = await Post.find();
   
   res.json(posts);
@@ -42,11 +48,3 @@ export const deletePost = async (req: any, res: any) => {
   await Post.deleteOne({ _id: req.params.id });
   res.json({ message: "Post deleted" });
 };
-
-
-export const getPostBySender = async (req: any, res: any) => {
-    const post = await Post.findById(req.params.id);
-    if (!post) return res.status(404).json({ message: "Post not found" });
-    await Post.deleteOne({ _id: req.params.id });
-    res.json({ message: "Post deleted" });
-  };
