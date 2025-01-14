@@ -4,22 +4,22 @@ import {
   getPosts,
   updatePost,
   deletePost,
-  likePost,
   getPostById,
+  getPostBySender
 } from "../controllers/postController";
 const router = express.Router();
 
 router.post("/", createPost);
-// router.post("/", authenticate, upload.single("image"), createPost);
 
 router.get("/", getPosts);
 
 router.get("/:id", getPostById);
 
+router.get("/", getPostBySender);
+
 router.put("/:id", updatePost);
 
 router.delete("/:id", deletePost);
 
-router.post("/:id/like", likePost);
 
 export default router;
