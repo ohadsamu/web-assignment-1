@@ -1,11 +1,11 @@
 import Post from "../models/post";
 
 export const createPost = async (req: any, res: any) => {
-  const { title, content, senderID } = req.body;
+  const { title, content, sender } = req.body;
   const post = new Post({
     title,
     content,
-    senderID
+    sender
   });
   await post.save();
   res.status(201).json(post);
@@ -14,7 +14,7 @@ export const createPost = async (req: any, res: any) => {
 export const getPosts = async (req: any, res: any) => {
   const { sender } = req.query;
   if (sender) {
-    const posts = await Post.find({ senderID: req.query.senderID });
+    const posts = await Post.find({ sender: req.query.sender });
     res.json(posts);
   }
 
@@ -34,10 +34,10 @@ export const updatePost = async (req: any, res: any) => {
   const post = await Post.findById(req.params.id);
   if (!post) return res.status(404).json({ message: "Post not found" });
 
-  const { title, content, senderID } = req.body;
+  const { title, content, sender } = req.body;
   post.title = title || post.title;
   post.content = content || post.content;
-  post.senderID = senderID || post.senderID;
+  post.sender = sender || post.sender;
   await post.save();
   res.json(post);
 };

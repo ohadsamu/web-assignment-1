@@ -1,0 +1,70 @@
+
+###
+
+GET http://localhost:3000/posts
+
+###
+
+GET http://localhost:3000/posts?sender=Ohad
+
+###
+
+GET http://localhost:3000/posts/6734b0c818a1cf8344804554
+
+###
+
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "title": "Check",
+    "senderID": "Ido",
+    "content": "Hello World"
+}
+
+###
+
+DELETE http://localhost:3000/posts/6734b0c818a1cf8344804554
+
+###
+
+PUT http://localhost:3000/posts/6734b0c818a1cf8344804554
+Content-Type: application/json
+{
+    "title": "Test",
+    "senderID": "Tzipi",
+    "content": "Change"
+}
+
+
+###
+
+GET http://localhost:3000/comments
+
+
+###
+
+GET http://localhost:3000/commments/6734b0c818a1cf8344804555
+
+###
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "content": "Check",
+    "post": "6734b0c818a1cf8344804554",
+}
+
+###
+
+DELETE http://localhost:3000/comments/6734b0c818a1cf8344804555
+
+###
+
+PUT http://localhost:3000/comments/6734b0c818a1cf8344804555
+Content-Type: application/json
+{
+    "content": "Change",
+    "post": "6734b0c818a1cf8344804554",
+}

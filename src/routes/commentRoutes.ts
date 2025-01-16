@@ -1,11 +1,9 @@
 import express from 'express';
-import { createComment, getCommentsForPost, getComments, getCommentById, updateComment, deleteComment } from '../controllers/commentController';
+import { createComment, getComments, getCommentById, updateComment, deleteComment } from '../controllers/commentController';
 
 const router = express.Router();
 
-router.post('/:postId', createComment);
-
-router.get('/:postId', getCommentsForPost);
+router.post('/', createComment);
 
 router.get("/", getComments);
 
