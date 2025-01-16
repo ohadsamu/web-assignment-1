@@ -14,18 +14,13 @@ export const getCommentById = async (req: any, res: any) => {
 };
 
 export const createComment = async (req: any, res: any) => {
-  const { content } = req.body;
+  const { content, post } = req.body;
   const comment = new Comment({
     content,
-    post: req.params.postId,
+    post
   });
   await comment.save();
   res.status(201).json(comment);
-};
-
-export const getCommentsForPost = async (req: any, res: any) => {
-  const comments = await Comment.find({ post: req.params.postId }).populate('user', 'username');
-  res.json(comments);
 };
 
 export const updateComment = async (req: any, res: any) => {
