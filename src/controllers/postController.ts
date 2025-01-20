@@ -16,11 +16,10 @@ export const getPosts = async (req: any, res: any) => {
   if (sender) {
     const posts = await Post.find({ sender: req.query.sender });
     res.json(posts);
+  } else {
+    const posts = await Post.find();
+    res.json(posts);
   }
-
-  const posts = await Post.find();
-  
-  res.json(posts);
 };
 
 export const getPostById = async (req: any, res: any) => {
