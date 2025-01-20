@@ -1,16 +1,3 @@
-
-###
-
-GET http://localhost:3000/posts
-
-###
-
-GET http://localhost:3000/posts?sender=Ohad
-
-###
-
-GET http://localhost:3000/posts/6734b0c818a1cf8344804554
-
 ###
 
 POST http://localhost:3000/posts
@@ -18,22 +5,43 @@ Content-Type: application/json
 
 {
     "title": "Check",
-    "senderID": "Ido",
+    "sender": "Ido",
     "content": "Hello World"
 }
 
-###
-
-DELETE http://localhost:3000/posts/6734b0c818a1cf8344804554
 
 ###
 
-PUT http://localhost:3000/posts/6734b0c818a1cf8344804554
+GET http://localhost:3000/posts
+
+###
+
+GET http://localhost:3000/posts?sender=Ido
+
+###
+
+GET http://localhost:3000/posts/678e1514b38b3ed3f8dc40b9
+
+###
+
+PUT http://localhost:3000/posts/678e1514b38b3ed3f8dc40b9
 Content-Type: application/json
+
 {
-    "title": "Test",
-    "senderID": "Tzipi",
+    "title": "Ohad",
+    "sender": "Ohad",
     "content": "Change"
+}
+
+
+###
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "content": "Check",
+    "post": "678e1514b38b3ed3f8dc40b9"
 }
 
 
@@ -44,27 +52,23 @@ GET http://localhost:3000/comments
 
 ###
 
-GET http://localhost:3000/commments/6734b0c818a1cf8344804555
+GET http://localhost:3000/comments/678e1987137cba3dc1dcaf15
+
 
 ###
 
-POST http://localhost:3000/comments
+PUT http://localhost:3000/comments/678e1987137cba3dc1dcaf15
 Content-Type: application/json
 
-{
-    "content": "Check",
-    "post": "6734b0c818a1cf8344804554",
-}
-
-###
-
-DELETE http://localhost:3000/comments/6734b0c818a1cf8344804555
-
-###
-
-PUT http://localhost:3000/comments/6734b0c818a1cf8344804555
-Content-Type: application/json
 {
     "content": "Change",
-    "post": "6734b0c818a1cf8344804554",
+    "post": "678e1514b38b3ed3f8dc40b9",
 }
+
+###
+
+DELETE http://localhost:3000/comments/678e1987137cba3dc1dcaf15
+
+###
+
+DELETE http://localhost:3000/posts/678e1514b38b3ed3f8dc40b9
