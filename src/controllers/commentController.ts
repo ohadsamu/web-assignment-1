@@ -35,7 +35,7 @@ export const updateComment = async (req: any, res: any) => {
 
 export const deleteComment = async (req: any, res: any) => {
   const comment = await Comment.findById(req.params.id);
-  if (!comment) return res.status(404).json({ message: "Post not found" });
+  if (!comment) return res.status(404).json({ message: "Comment not found" });
   await Comment.deleteOne({ _id: req.params.id });
-  res.json({ message: "Post deleted" });
+  res.json({ message: "Comment deleted" });
 };
